@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Chat from '../../components/chat/chat';
 import Stock from '../../components/stock/stock';
 

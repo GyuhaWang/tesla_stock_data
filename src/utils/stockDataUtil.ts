@@ -4,7 +4,7 @@ export function splitData(
 	const match = value.match(/([-+]?\d+\.\d+)(\d+\.\d+)([-+]?\d+\.\d+%)/);
 
 	if (match) {
-		const [, gap, a, percent] = match;
+		const [, gap, _, percent] = match;
 		return {
 			gap,
 			percent,

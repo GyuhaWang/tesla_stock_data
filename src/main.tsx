@@ -1,8 +1,7 @@
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { SocketContext, socket } from './context/socketContext';
 import './index.css';
-import Home from './pages/0_0_home/HOME.tsx';
+import Home from './pages/0_0_home/HOME';
 
 createRoot(document.getElementById('root')!).render(
 	// <StrictMode>

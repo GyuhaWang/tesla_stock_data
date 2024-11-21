@@ -1,7 +1,7 @@
 import * as React from 'react';
-import io, { Socket } from 'socket.io-client';
+import io from 'socket.io-client';
 
-const serverAddress = 'localhost';
+const serverAddress = import.meta.env.VITE_SERVER_URL;
 const portNumber = 3001;
 const url = `http://${serverAddress}:${portNumber}`;
 export interface SocketState {
