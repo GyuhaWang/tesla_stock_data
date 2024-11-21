@@ -1,0 +1,39 @@
+div#chatbox_layout {
+	min-height: 1.5rem;
+
+	padding: 4px 8px 4px 8px;
+	gap: 0.5em;
+}
+div#chatbox_message_layout {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	border-radius: 20px;
+	background-color: rgba(195, 195, 195, 0.2);
+	padding: 4px 12px 4px 12px;
+}
+div#chatbox_user_layout {
+	font-size: 0.7rem;
+}
+div#chatbox_inner_layout {
+	display: flex;
+}
+#chatbox_connection_layout {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+p.chatbox_text {
+	font-size: 0.8rem;
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+p.chatbox_user_text {
+	color: gray;
+	font-size: 0.5rem;
+	line-height: 0;
+}
+#chatbox_connection_layout > .chatbox_text {
+	color: gray;
+}

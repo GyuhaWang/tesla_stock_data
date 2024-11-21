@@ -1,0 +1,11 @@
+#count_layout {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: end;
+}
+
+p.count_text {
+	font-size: 0.4rem;
+	line-height: 0;
+}
