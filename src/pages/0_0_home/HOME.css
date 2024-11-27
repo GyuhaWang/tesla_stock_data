@@ -9,7 +9,8 @@
 	height: 100%;
 	width: 100%;
 }
-
+#root_layout.layout {
+}
 section#chat_section {
 	display: flex;
 	height: 100%;
@@ -17,8 +18,13 @@ section#chat_section {
 }
 
 section#content_section {
-	display: flex;
-	flex-direction: column;
 	height: 100%;
 	width: 100%;
+	overflow-y: scroll;
+	position: relative;
+	padding: 0 1rem 2rem 2rem;
+}
+
+.spacer_10 {
+	height: 2rem;
 }

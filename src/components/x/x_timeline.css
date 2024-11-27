@@ -1,0 +1,13 @@
+.x_timeline {
+	min-width: 400px;
+	max-width: 400px;
+	width: 100%;
+	position: relative;
+}
+#x_loading_layout {
+	height: 500px;
+	width: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

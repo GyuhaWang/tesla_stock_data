@@ -1,5 +1,11 @@
 section#stock_section {
 	width: 100%;
+	position: sticky;
+	top: 0;
+	background-color: white;
+	opacity: 0.9;
+	z-index: 10;
+	padding-top: 2rem;
 }
 
 #stock_header {

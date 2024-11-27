@@ -1,5 +1,6 @@
 import Chat from '../../components/chat/chat';
 import Stock from '../../components/stock/stock';
+import X from '../../components/x/x';
 
 import './HOME.css';
 
@@ -17,8 +18,12 @@ function Home() {
 				<section id="content_section">
 					{/* <div id="stock_section">stock</div> */}
 					<Stock />
-
-					<div id="x_section">X</div>
+					<div className="spacer_10" />
+					<X />
+					<div className="spacer_10" />
+					<div>뉴스</div>
+					<div>채용</div>
+					<div>구글 검색량</div>
 				</section>
 			</div>
 		</div>

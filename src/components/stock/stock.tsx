@@ -29,7 +29,7 @@ export default function Stock() {
 
 		socket.on('stock_data', (data: StockData) => {
 			const stockPrice =
-				data.price != null ? data.price.replace(/[^\d.-]/g, '') ?? '0' : '0';
+				data?.price != null ? data.price.replace(/[^\d.-]/g, '') ?? '0' : '0';
 			setStockData(stockPrice);
 			const { gap, percent } = splitData(data.gap ?? '') ?? {
 				gap: '0',
@@ -77,16 +77,22 @@ export default function Stock() {
 						style={{ height: '1.25rem' }}
 					/>
 					<div id="stock_price_row">
-						<span
-							id="stock_price"
-							className="x3large_text">
-							{stockData}
-						</span>
-						<span
-							id="currency"
-							className="xsmall_text_eng">
-							USD
-						</span>
+						{stockData != '0' ? (
+							<>
+								<span
+									id="stock_price"
+									className="x3large_text">
+									{stockData}
+								</span>
+								<span
+									id="currency"
+									className="xsmall_text_eng">
+									USD
+								</span>
+							</>
+						) : (
+							<div>현재 주식 가격 불러오기 실패...</div>
+						)}
 					</div>
 					<div id="stock_gap_percent">
 						<span
