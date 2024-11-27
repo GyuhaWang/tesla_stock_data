@@ -6,10 +6,6 @@
 	padding: auto;
 }
 
-.x3large_text {
-	font-size: 1.875rem /* 30px */;
-	line-height: 2.25rem /* 36px */;
-}
 #x_scroll_layout {
 	display: flex;
 	flex: row;

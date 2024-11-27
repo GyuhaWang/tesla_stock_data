@@ -7,7 +7,7 @@ export default function X() {
 		<section id="x_section">
 			<div
 				id="x_header"
-				className="x3large_text">
+				className="text_3xl">
 				X
 			</div>
 			<div id="x_scroll_layout">

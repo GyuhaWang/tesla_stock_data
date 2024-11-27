@@ -1,4 +1,5 @@
 import Chat from '../../components/chat/chat';
+import News from '../../components/news/news';
 import Stock from '../../components/stock/stock';
 import X from '../../components/x/x';
 
@@ -21,9 +22,7 @@ function Home() {
 					<div className="spacer_10" />
 					<X />
 					<div className="spacer_10" />
-					<div>뉴스</div>
-					<div>채용</div>
-					<div>구글 검색량</div>
+					<News />
 				</section>
 			</div>
 		</div>

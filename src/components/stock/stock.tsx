@@ -57,12 +57,12 @@ export default function Stock() {
 						<div id="stock_info">
 							<span
 								id="tesla_eng"
-								className="small_text_eng">
+								className="text_sm">
 								TSLA
 							</span>
 							<span
 								id="market_kor"
-								className="small_text_kor">
+								className="text_sm kor">
 								나스닥
 							</span>
 						</div>
@@ -81,12 +81,12 @@ export default function Stock() {
 							<>
 								<span
 									id="stock_price"
-									className="x3large_text">
+									className="text_3xl">
 									{stockData}
 								</span>
 								<span
 									id="currency"
-									className="xsmall_text_eng">
+									className="text_sm">
 									USD
 								</span>
 							</>
@@ -122,7 +122,7 @@ export default function Stock() {
 					</div>
 				</>
 			) : (
-				<div className="x3large_text">주식 데이터 로드중...</div>
+				<div className="text_3xl">주식 데이터 로드중...</div>
 			)}
 		</section>
 	);

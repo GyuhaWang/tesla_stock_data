@@ -17,24 +17,6 @@ section#stock_section {
 	gap: 0.5rem;
 	vertical-align: top;
 }
-.xsmall_text_eng {
-	font-size: 0.75rem /* 12px */;
-	line-height: 1rem /* 16px */;
-}
-.small_text_eng {
-	font-size: 0.875rem /* 14px */;
-	line-height: 1.25rem /* 20px */;
-	font-weight: 600;
-}
-.x3large_text {
-	font-size: 1.875rem /* 30px */;
-	line-height: 2.25rem /* 36px */;
-}
-.small_text_kor {
-	font-size: 0.875rem /* 14px */;
-	line-height: 1.25rem /* 20px */;
-	font-weight: 500;
-}
 #market_kor {
 	--tw-text-opacity: 1;
 	color: rgb(75 85 99 / var(--tw-text-opacity)) /* #4b5563 */;
