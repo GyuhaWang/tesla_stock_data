@@ -23,6 +23,7 @@ function Home() {
 					<X />
 					<div className="spacer_10" />
 					<News />
+					<div className="spacer_10" />
 				</section>
 			</div>
 		</div>

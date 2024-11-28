@@ -23,8 +23,9 @@ section#content_section {
 	overflow-y: scroll;
 	position: relative;
 	padding: 0 1rem 2rem 2rem;
+	
 }
 
 .spacer_10 {
-	height: 2rem;
+	height: 3rem;
 }

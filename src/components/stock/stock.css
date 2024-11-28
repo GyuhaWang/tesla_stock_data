@@ -6,6 +6,7 @@ section#stock_section {
 	opacity: 0.9;
 	z-index: 10;
 	padding-top: 2rem;
+	overflow-x: clip;
 }
 
 #stock_header {
@@ -30,7 +31,8 @@ section#stock_section {
 	display: flex;
 	flex-direction: row;
 	vertical-align: top;
-	gap: 0.25rem;
+	overflow-x: scroll;
+	gap: 2rem;
 }
 #stock_price {
 	font-weight: bold;

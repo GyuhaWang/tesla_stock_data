@@ -1,129 +1,114 @@
-import { useState, useEffect, useContext } from 'react';
-import { SocketContext, SocketState } from '../../context/socketContext';
-import { splitData } from '../../utils/stockDataUtil';
+import { useState, useEffect } from 'react';
+
+import StockDataBox from '../../UI/stock_data_box';
+import Info from '../../assets/info.svg';
 import './stock.css';
 
 export interface StockData {
-	price: string | null;
-	gap: string | null;
+	T: string; // 주식 심볼 (예: "AAPL")
+	v: number; // 거래량 (Volume)
+	vw: number; // 거래량 가중 평균가 (Volume-weighted average price)
+	o: number; // 시가 (Open price)
+	c: number; // 종가 (Close price)
+	h: number; // 최고가 (High price)
+	l: number; // 최저가 (Low price)
+	t: number; // 타임스탬프 (Timestamp in milliseconds)
+	n: number; // 거래 횟수 (Number of trades)
 }
+const serverAddress = import.meta.env.VITE_SERVER_URL;
+const portNumber = 3001;
+
+
 export default function Stock() {
-	//--------------state------------------
-	const socket = useContext(SocketContext);
-	const [stockData, setStockData] = useState<string>();
-	const [gapData, setGap] = useState<string>();
-	const [percentData, setPercent] = useState<string>();
-	const [socketState, setSocketState] = useState<SocketState>({
-		connect: false,
-	});
-	//----------------useEffect-----------------------------------
+	const [stockData, setStockData] = useState<StockData>();
+	const [showInfo, setShowInfo] = useState(false);
+	// ----------------- getStockData --------------------
 
-	//-------------------stock_socket-------------------
 	useEffect(() => {
-		socket.on('connect', () => {
-			setSocketState((prev) => {
-				const newState = { ...prev, connect: true };
-				return newState;
-			});
-		});
+		
 
-		socket.on('stock_data', (data: StockData) => {
-			const stockPrice =
-				data?.price != null ? data.price.replace(/[^\d.-]/g, '') ?? '0' : '0';
-			setStockData(stockPrice);
-			const { gap, percent } = splitData(data.gap ?? '') ?? {
-				gap: '0',
-				percent: '0',
-			};
-			setGap(gap);
-			setPercent(percent);
-		});
-		socket.on('disconnect', () => {
-			setSocketState((prev) => {
-				const newState = { ...prev, connect: false };
-				return newState;
-			});
-		});
-		return () => {
-			socket.off('stock_data');
+		const getStockData = async () => {
+			try {
+				const res = await fetch(
+					`http://${serverAddress}:${portNumber}/stock/openclose`
+				);
+
+				if (!res.ok) {
+					throw new Error(`HTTP error! Status: ${res.status}`);
+				}
+
+				const data = await res.json();
+				console.log('Fetched stock data:', data);
+
+				setStockData(data);
+			} catch (error) {
+				console.error('Failed to fetch stock data:', error);
+			}
 		};
-	}, []);
+
+		getStockData();
+	}, [serverAddress]);
 
 	return (
 		<section id="stock_section">
-			{socketState.connect ? (
-				<>
-					<div id="stock_header">
+			 <div id="stock_header">
 						<div id="stock_info">
 							<span
 								id="tesla_eng"
 								className="text_sm">
-								TSLA
+								{stockData?.T}
 							</span>
 							<span
 								id="market_kor"
 								className="text_sm kor">
 								나스닥
 							</span>
+							<div id="info_section">
+					<img
+						id="info_button"
+						onMouseEnter={() => setShowInfo(true)}
+						onMouseLeave={() => setShowInfo(false)}
+						src={Info}
+					/>
+					{showInfo && (
+						<div
+							id="info_modal"
+							className="text_md border_gray">
+							비용 문제로 실시간 주식 정보를 제공하지 못하고 있습니다.<br/>
+							어제의 주식 가격이 제공되며 업데이트 시간은 매일 오전 7시 입니다. <br/>
+							빠른 시일내로 실시간 주식 가격 정보를 제공할 수 있도록 하겠습니다.
+						</div>
+					)}
+				</div>
 						</div>
 						<div
 							id="tesla_kor"
-							className="xlarge_text_kor">
+							className="section_title">
 							테슬라
+						</div>
+						<div>
+
+						
 						</div>
 					</div>
 					<div
 						id="space"
-						style={{ height: '1.25rem' }}
+						style={{ height: '1rem' }}
 					/>
 					<div id="stock_price_row">
-						{stockData != '0' ? (
-							<>
-								<span
-									id="stock_price"
-									className="text_3xl">
-									{stockData}
-								</span>
-								<span
-									id="currency"
-									className="text_sm">
-									USD
-								</span>
-							</>
-						) : (
-							<div>현재 주식 가격 불러오기 실패...</div>
-						)}
+					<StockDataBox title='거래량' value={stockData?.v??0} formatType="number"/>
+					<StockDataBox title='시가' value={stockData?.o??0} formatType="number"/>
+					<StockDataBox title='종가' value={stockData?.c??0} formatType="number"/>
+					<StockDataBox title='최고가' value={stockData?.h??0} formatType="number"/>
+					<StockDataBox title='최저가' value={stockData?.l??0} formatType="number"/>
+					
+
+						
+					
+					
 					</div>
-					<div id="stock_gap_percent">
-						<span
-							id="stock_gap"
-							style={
-								Number(gapData) < 0
-									? { color: 'rgb(37 99 235 )' }
-									: Number(gapData) == 0
-									? { color: ' rgb(75 85 99)' }
-									: { color: 'rgb(239 68 68)' }
-							}
-							className={'stock_data_text'}>
-							{gapData}
-						</span>
-						<span
-							id="stock_percent"
-							style={
-								Number(gapData) < 0
-									? { color: 'rgb(37 99 235 )' }
-									: Number(gapData) == 0
-									? { color: 'rgb(75 85 99)' }
-									: { color: 'rgb(239 68 68)' }
-							}
-							className={'stock_data_text'}>
-							{percentData}
-						</span>
-					</div>
-				</>
-			) : (
-				<div className="text_3xl">주식 데이터 로드중...</div>
-			)}
+					<div className='text_xs'>업데이트 날짜 : {Intl.DateTimeFormat('ko-KR').format(stockData?.t??0)}</div>
+			
 		</section>
 	);
 }

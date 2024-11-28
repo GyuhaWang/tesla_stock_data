@@ -36,10 +36,10 @@ function InsightBubble({ insight }: { insight: Insight }) {
 }
 export default function Card({ article }: { article: StockArticle }) {
 	const tslaInsights = useMemo(() => {
-		const filteredInsights = article.insights;
-		// .filter(
-		// 	(value) => value.ticker == 'TSLA'
-		// );
+		const filteredInsights = article.insights
+		.filter(
+			(value) => value.ticker == 'TSLA'
+		);
 		return filteredInsights;
 	}, [article.insights]);
 	return (

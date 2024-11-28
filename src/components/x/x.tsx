@@ -7,8 +7,8 @@ export default function X() {
 		<section id="x_section">
 			<div
 				id="x_header"
-				className="text_3xl">
-				X
+				className="section_title">
+				X(twitter)
 			</div>
 			<div id="x_scroll_layout">
 				<XTimeline url="Tesla" />

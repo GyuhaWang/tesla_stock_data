@@ -1,2 +1,35 @@
+#news_section {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
 #x_header {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+#info_button {
+	height: 16px;
+	width: 16px;
+}
+
+#info_section {
+	position: relative;
+}
+
+#info_modal {
+	position: absolute;
+	background-color: white;
+	padding: 0.8rem;
+	width: 250px;
+	border-radius: 20px;
+	z-index: 20;
+}
+
+#news_scroll_row {
+	display: flex;
+	flex: row;
+	gap: 1rem;
+	overflow-x: scroll;
 }
