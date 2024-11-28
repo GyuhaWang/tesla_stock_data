@@ -33,10 +33,9 @@ const serverAddress = import.meta.env.VITE_SERVER_URL;
 const portNumber = 3001;
 export default function News() {
 	const [showInfo, setShowInfo] = useState(false);
-	const [news, setNews] = useState<StockArticle[]>([
-	]);
+	const [news, setNews] = useState<StockArticle[]>([]);
 
-	useEffect(()=>{
+	useEffect(() => {
 		const getNewskData = async () => {
 			try {
 				const res = await fetch(
@@ -57,7 +56,7 @@ export default function News() {
 		};
 
 		getNewskData();
-	},[])
+	}, []);
 	return (
 		<section id="news_section">
 			<div id="x_header">
@@ -84,7 +83,7 @@ export default function News() {
 				</div>
 			</div>
 			<div id="news_scroll_row">
-				{news.map((article, index) => (
+				{news.map((article) => (
 					<Card
 						key={article.id}
 						article={article}
