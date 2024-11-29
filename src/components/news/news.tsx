@@ -47,7 +47,6 @@ export default function News() {
 				}
 
 				const data = await res.json();
-				console.log('Fetched stock data:', data);
 
 				setNews(data);
 			} catch (error) {
